@@ -67,14 +67,12 @@ if (str_starts_with($action, 'roll_die_')) {
     }
 }
 
-
 if (str_starts_with($action, 'clear_die_')) {
     $to_clear = intval(substr($action, 10));
     if ($to_clear >= 0 && $to_clear < count($dices)) {
         $rolled[$to_clear] = '';
     }
 }
-
 
 $sum = array_sum($rolled);
 $sum = $sum === 0 ? '' : "$sum";
@@ -95,11 +93,8 @@ $sum = $sum === 0 ? '' : "$sum";
   </head>
   <body>
     <header>
-      <h1>
-		DICES
-      </h1>
+      <h1>DICES</h1>
     </header>
-  <body>
     <form action='' method='post'>
 	  <main>
 		<input type='hidden' name='num_dices' value='<?= $num_dices ?>'>
@@ -124,8 +119,10 @@ $sum = $sum === 0 ? '' : "$sum";
 			<?php endforeach ?>
 		  </tbody>
           <tfoot>
-              <th> SUM </th>
-              <th> <?= $sum ?> </th>     
+              <tr>
+                <th> SUM </th>
+                <th> <?= $sum ?> </th>
+              </tr>
           </tfoot>
 		</table>	
 	  </main>
@@ -135,8 +132,7 @@ $sum = $sum === 0 ? '' : "$sum";
 	    <input type='submit' name='clear_dices' value='Clear'>
 	  </footer>
     </form>
-  </body>
-  <footer>
-  </footer>
+    <footer>
+    </footer>
   </body>
 </html>
