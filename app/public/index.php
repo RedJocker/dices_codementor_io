@@ -77,6 +77,7 @@ if (str_starts_with($action, 'clear_die_')) {
 
 
 $sum = array_sum($rolled);
+$sum = $sum === 0 ? '' : "$sum";
 
 // echo '<pre>';
 // var_dump($action);
