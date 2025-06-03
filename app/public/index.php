@@ -8,6 +8,7 @@ $num_dices = $_POST['num_dices'] ?? 1;
 $dices = [];
 $rolled = [];
 $action = 'none';
+$sum = '';
 
 if ($_POST['roll_dices'] !== null) {
 	$action = 'roll_dices';
@@ -63,12 +64,14 @@ if (str_starts_with($action, 'roll_die_')) {
     }
 }
 
+$sum = array_sum($rolled);
 
 // echo '<pre>';
 // var_dump($action);
 // var_dump($_POST);
 // var_dump($dices);
 // var_dump($rolled);
+// var_dump($sum);
 // echo '</pre>';
 
 ?>
@@ -106,9 +109,13 @@ if (str_starts_with($action, 'roll_die_')) {
 			  </tr>
 			<?php endforeach ?>
 		  </tbody>
+          <tfoot>
+              <th> SUM </th>
+              <th> <?= $sum ?> </th>     
+          </tfoot>
 		</table>	
 	  </main>
-	  <footer>
+	  <footer>         
 		<input type='submit' name='add_die' value='Add die'>
 		<input type='submit' name='roll_dices' value='Roll Dices'>
 	    <input type='submit' name='clear_dices' value='Clear'>
