@@ -20,10 +20,13 @@ if ($_POST['roll_dices'] !== null) {
     for ($i = 0; $i < $num_dices; $i++) {
         $delete_die_action = $_POST['del_die_' . $i] ?? '';
         $roll_die_action = $_POST['roll_die_' . $i] ?? '';
+        $clear_die_action = $_POST['clear_die_' . $i] ?? '';
         if($delete_die_action !== '')
             $action = 'del_die_' . $i;
         else if($roll_die_action !== '')
             $action = 'roll_die_' . $i;
+        else if($clear_die_action !== '')
+            $action = 'clear_die_' . $i;
     }
 }
 
@@ -63,6 +66,15 @@ if (str_starts_with($action, 'roll_die_')) {
         $rolled[$to_roll] = "{$dices[$to_roll]->roll()}";
     }
 }
+
+
+if (str_starts_with($action, 'clear_die_')) {
+    $to_clear = intval(substr($action, 10));
+    if ($to_clear >= 0 && $to_clear < count($dices)) {
+        $rolled[$to_clear] = '';
+    }
+}
+
 
 $sum = array_sum($rolled);
 
@@ -105,6 +117,7 @@ $sum = array_sum($rolled);
                 <td> 
 					 <input type='submit' name='del_die_<?= $i ?>' value='Delete'>
      				 <input type='submit' name='roll_die_<?= $i ?>' value='Roll'>
+     				 <input type='submit' name='clear_die_<?= $i ?>' value='Clear'>     
                 </td>
 			  </tr>
 			<?php endforeach ?>
