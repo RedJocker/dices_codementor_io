@@ -4,21 +4,21 @@ namespace Dices;
 
 require_once '../DieSingle.php';
 
-$num_dices = $_GET['num_dices'] ?? 1;
+$num_dices = $_POST['num_dices'] ?? 1;
 $dices = [];
 $rolled = [];
 $action = 'none';
 
-if ($_GET['roll_dices'] !== null) {
+if ($_POST['roll_dices'] !== null) {
 	$action = 'roll_dices';
-} else if ($_GET['add_die'] !== null) {
+} else if ($_POST['add_die'] !== null) {
 	$action = 'add_die';
-} else if ($_GET['clear_dices'] !== null) {
+} else if ($_POST['clear_dices'] !== null) {
 	$action = 'clear_dices';
 } else {
     for ($i = 0; $i < $num_dices; $i++) {
-        $delete_die_action = $_GET['del_die_' . $i] ?? '';
-        $roll_die_action = $_GET['roll_die_' . $i] ?? '';
+        $delete_die_action = $_POST['del_die_' . $i] ?? '';
+        $roll_die_action = $_POST['roll_die_' . $i] ?? '';
         if($delete_die_action !== '')
             $action = 'del_die_' . $i;
         else if($roll_die_action !== '')
@@ -27,11 +27,11 @@ if ($_GET['roll_dices'] !== null) {
 }
 
 for ($i = 0; $i < $num_dices; $i++) {
-	$die_type = (int) ($_GET['die_' . $i] ?? 6);
+	$die_type = (int) ($_POST['die_' . $i] ?? 6);
     $die_type = $die_type < 2 ? 2 : $die_type;
     $die = new DieSingle($die_type);
     $dices[] = $die;
-    $rolled[] = ($_GET['rolled_' . $i] ?? '');
+    $rolled[] = ($_POST['rolled_' . $i] ?? '');
 }
 
 if ($action === 'add_die') {
@@ -66,7 +66,7 @@ if (str_starts_with($action, 'roll_die_')) {
 
 // echo '<pre>';
 // var_dump($action);
-// var_dump($_GET);
+// var_dump($_POST);
 // var_dump($dices);
 // var_dump($rolled);
 // echo '</pre>';
@@ -84,7 +84,7 @@ if (str_starts_with($action, 'roll_die_')) {
       </h1>
     </header>
   <body>
-    <form action='' method='get'>
+    <form action='' method='post'>
 	  <main>
 		<input type='hidden' name='num_dices' value='<?= $num_dices ?>'>
 		<table>
