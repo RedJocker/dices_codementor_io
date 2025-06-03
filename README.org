@@ -1,0 +1,26 @@
+* Dices
+
+Project inspired by challenge at [[https://www.codementor.io/projects/web/random-number-generator-web-app-bz042v8kll][codementor.io]]
+
+** scope
+
+Produces a simple page in which is possible to roll dices
+with the desired number of faces for each die.
+It is possible to roll all dices at once, or each die individually.
+
+** elaboration
+
+Simple php project runned locally, with server generated pages, no javascript.
+
+** running
+
+After cloning project move to folder /app and run
+
+#+BEGIN_SRC bash
+  php -S localhost:8000
+#+END_SRC
+
+and then on browser access url [[http://localhost:8000/]]
+
+You can change port number from 8000 to desired port number changing
+it on both command and url.
