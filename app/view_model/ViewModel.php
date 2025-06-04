@@ -92,22 +92,19 @@ class ViewModel {
         array $messages, int $num_dices
     ): string {
 
-        if ($messages['roll_dices'] !== null) {
+        if (isset($messages['roll_dices'])) {
             return 'roll_dices';
-        } else if ($messages['add_die'] !== null) {
+        } else if (isset($messages['add_die'])) {
             return 'add_die';
-        } else if ($messages['clear_dices'] !== null) {
+        } else if (isset($messages['clear_dices'])) {
             return 'clear_dices';
         } else {
             for ($i = 0; $i < $num_dices; $i++) {
-                $delete_die_action = $messages['del_die_' . $i] ?? '';
-                $roll_die_action = $messages['roll_die_' . $i] ?? '';
-                $clear_die_action = $messages['clear_die_' . $i] ?? '';
-                if($delete_die_action !== '')
+                if(isset($messages['del_die_' . $i]))
                     return 'del_die_' . $i;
-                else if($roll_die_action !== '')
+                else if(isset($messages['roll_die_' . $i]))
                     return 'roll_die_' . $i;
-                else if($clear_die_action !== '')
+                else if(isset($messages['clear_die_' . $i]))
                     return 'clear_die_' . $i;
             }
             return 'none';
