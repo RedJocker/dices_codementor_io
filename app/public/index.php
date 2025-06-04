@@ -1,7 +1,8 @@
 <?php
 
-namespace Dices;
+declare(strict_types=1);
 
+namespace Dices;
 
 require_once '../view_model/ViewModel.php';
 

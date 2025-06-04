@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Dices;
 
@@ -84,7 +85,7 @@ class ViewModel {
     }
 
     private function num_dices_from_messages(array $messages) {
-        return $messages['num_dices'] ?? 1;
+        return intval($messages['num_dices'] ?? 1);
     }
 
     private function action_from_messages(
