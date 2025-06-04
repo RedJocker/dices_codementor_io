@@ -2,7 +2,7 @@
 
 namespace Dices;
 
-require_once '../DieSingle.php';
+
 require_once '../view_model/ViewModel.php';
 
 $vm = new ViewModel(messages: $_POST);

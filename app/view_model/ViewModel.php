@@ -2,6 +2,8 @@
 
 namespace Dices;
 
+require_once '../DieSingle.php';
+
 class ViewModel {
 
     private int $num_dices;
